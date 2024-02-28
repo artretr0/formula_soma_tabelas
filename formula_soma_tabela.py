@@ -6,7 +6,9 @@ sg.theme('PythonPlus')
 layout = [
     #[sg.Image(r'C:\Users\EVERTONDASILVAPAIVA\Everton Paiva\Arthur\Codes\tabela_auto\EMLURB.png')],
     [sg.Text('Esse programa foi feito para auxiliar na construção da tabela de quantitativos.')],
-    [sg.Text('Lembre-se de verificar tabelas ocultas no arquivo. O programa também as incluirá.')],
+    [sg.Text('Dado uma arquivo no formato .xlsx e uma célula, ele irá retornar')],
+    [sg.Text('a soma daquela célula para todas as tabelas existentes no arquivo')],
+    #[sg.Text('Lembre-se de verificar tabelas ocultas no arquivo. O programa também as incluirá.')],
     [sg.Text('Selecione o arquivo que Excel: '), sg.FileBrowse(key='teste.xlsx')],
     [sg.Text('Selecione qual tabela você deseja somar: '), sg.InputText(key='cel')],
     [sg.Button("Enviar")],
