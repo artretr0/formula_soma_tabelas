@@ -26,18 +26,32 @@ while True:
         cel = values['cel']
 
         xl = pd.ExcelFile(planilha)
-        df_combined = pd.DataFrame()
+        sheets = xl.book.worksheets
+        #df_combined = pd.DataFrame()
         i = 1
 
-        for sheet_name in xl.sheet_names:
-            names = sheet_name
-            if i == 1:
-                formula = "A fórmula referente a soma das tabelas para a célula " + cel + " é: \n" + "=('" + names + "'!" + cel + " + "
-            elif i == len(xl.sheet_names):
-                formula = formula + "'" + names + "'!" + cel + ")\n"
-            else:
-                formula = formula + "'" + names + "'!" + cel + " + "
-                
+        #Ignora Células Ocultas
+        for sheet in sheets:
+            if sheet.sheet_state == 'visible':
+                names = sheet.title
+                if i == 1:
+                    formula = "A fórmula referente a soma das tabelas para a célula " + cel + " é: \n" + "=('" + names + "'!" + cel + " + "
+                elif i == len(xl.sheet_names):
+                    formula = formula + "'" + names + "'!" + cel + ")\n"
+                else:
+                    formula = formula + "'" + names + "'!" + cel + " + "
             i = i + 1
+            
+        #Adiciona Células Ocultas
+        # for sheet_name in xl.sheet_names:
+        #     names = sheet_name
+        #     if i == 1:
+        #         formula = "A fórmula referente a soma das tabelas para a célula " + cel + " é: \n" + "=('" + names + "'!" + cel + " + "
+        #     elif i == len(xl.sheet_names):
+        #         formula = formula + "'" + names + "'!" + cel + ")\n"
+        #     else:
+        #         formula = formula + "'" + names + "'!" + cel + " + "
+                
+            # i = i + 1
         print(formula)
     window['formula'].update()
