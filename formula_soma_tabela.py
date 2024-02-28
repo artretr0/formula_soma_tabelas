@@ -36,11 +36,14 @@ while True:
         for sheet in sheets:
             if sheet.sheet_state == 'visible':
                 tabelas.append(sheet.title)
-        #print(tabelas)
+        # print(tabelas)
+        # print(len(tabelas))
 
         for sheet_name in tabelas:
             names = sheet_name
-            if tabelas.index(sheet_name) == 1:
+            if len(tabelas) < 3:
+                formula = "A fórmula referente a soma das tabelas para a célula " + cel + " é: \n" + "('" + names + "'!" + cel + ")" 
+            elif tabelas.index(sheet_name) == 1:
                 formula = "A fórmula referente a soma das tabelas para a célula " + cel + " é: \n" + "=('" + names + "'!" + cel + " + "
             elif tabelas.index(sheet_name) == len(tabelas)-1 or tabelas.index(sheet_name) == 1:
                 formula = formula + "'" + names + "'!" + cel + ")\n"
