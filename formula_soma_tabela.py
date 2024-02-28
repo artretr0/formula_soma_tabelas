@@ -6,7 +6,6 @@ sg.theme('GrayGrayGray')
 layout = [
     [sg.Image(r'C:\Users\EVERTONDASILVAPAIVA\Everton Paiva\Arthur\Codes\tabela_auto\EMLURB.png')],
     [sg.Text('Esse programa foi feito para auxiliar na construção da tabela de quantitativos.')],
-    #[sg.Text('Lembre-se de verificar tabelas ocultas no arquivo. O programa também as incluirá.')],
     [sg.Text('Selecione o arquivo Excel: ')], 
     [sg.Input(), sg.FileBrowse(key='teste.xlsx')],
     [sg.Text('Selecione qual célula você deseja somar: '), sg.InputText(key='cel')],
@@ -39,6 +38,7 @@ while True:
         # print(tabelas)
         # print(len(tabelas))
 
+        #Formata a formula
         for sheet_name in tabelas:
             names = sheet_name
             if len(tabelas) < 3:
